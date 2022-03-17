@@ -14,7 +14,7 @@ def download_mangas(supabase_client):
 
     for manga in mangas.data:
         os.system(
-            f"manga-py {manga['url']} --cbz -d /mangas --name {manga['name']}")
+            f"manga-py {manga['url']} --cbz -d /mangas --name '{manga['name']}'")
 
 
 url: str = os.environ.get("SUPABASE_URL")
