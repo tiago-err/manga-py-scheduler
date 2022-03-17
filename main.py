@@ -8,13 +8,13 @@ def download_mangas(supabase_client):
     print("DOWNLOADING MANGAS")
 
     try:
-        mangas = supabase.table("mangas").select("*").execute()
+        mangas = supabase_client.table("mangas").select("*").execute()
     except:
         return
 
     for manga in mangas.data:
         os.system(
-            f"manga-py {manga['url']} --cbz -d /mangas --name '{manga['name']}'")
+            f"manga-py {manga['url']} --cbz -d /mangas --name '{manga['name']}' --global-progress")
 
 
 url: str = os.environ.get("SUPABASE_URL")
